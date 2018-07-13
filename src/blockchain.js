@@ -33,7 +33,7 @@ const createNewBlock = data => {
   const previousBlock = getLastBlock()
   const newBlockIndex = previousBlock.index + 1
   const newTimestamp = getTimestamp()
-  
+
   const newHash = createHash(
     newBlockIndex, 
     previousBlock.hash, 
@@ -50,4 +50,33 @@ const createNewBlock = data => {
   )
 
   return newBlock
+}
+
+const getBlocksHash = block => 
+createHash(
+  block.index,
+  block.previousHash,
+  block.timestamp,
+  block.data
+)
+
+const isNewBlockValid = (candidateBlock, latestBlock) => {
+  if (latestBlock.index + 1 !== candidateBlock.index) {
+
+    console.log('Candidate block does not have valid index')
+    return false
+
+  } else if (latestBlock.hash !== candidateBlock.previousHash) {
+
+    console.log('The previous hash of candidate block is not the hash of latest block')
+    return false
+
+  } else if (getBlocksHash(candidateBlock) !== candidateBlock.hash) {
+
+    console.log('The hash of this block is invalid')
+    return false
+
+  }
+
+  return true
 }
