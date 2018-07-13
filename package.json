@@ -1,0 +1,12 @@
+{
+  "name": "mycoin",
+  "version": "1.0.0",
+  "description": "coin based on node",
+  "main": "src/server.js",
+  "repository": "https://github.com/kcrossfitter/mycoin",
+  "author": "Sangwook Cho <korean.crossfitter@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  }
+}
